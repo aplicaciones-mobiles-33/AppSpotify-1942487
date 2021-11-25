@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "spotifyapp-c1335": {
+      "hosting": {
+        "app": [
+          "spotifyapp-c1335"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "spotifyapp-c1335"
+  }
+}
