@@ -21,4 +21,8 @@ export class SharedService {
   getRecoms(){
     return this.firebase.list('recomendaciones');
   }
+
+  getSongs(){
+    return this.firebase.list('canciones');
+  }
 }

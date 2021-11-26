@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-row>
+    <ion-col size=".5"></ion-col>
+    <ion-col size="11">
+      <h3>Buscar</h3>
+      <ion-item class="search" >
+        <ion-icon name="search"></ion-icon>
+        <ion-input placeholder="Artistas y canciones" [(ngModel)]="busqueda" (keyup.enter)="search()"></ion-input>
+      </ion-item>
+      <br>
+      <div *ngIf="visible">
+        <ion-card *ngFor="let options of listOptions">
+          <img src={{options.caratula}} class="album">
+          <p class="titulo" style="font-weight: bold; font-size: medium; margin-bottom: 0;">{{options.titulo}}</p>
+          <p class="titulo" style="font-size: smaller; margin-top: 0;"><li>{{options.autor}}</li></p>
+        </ion-card>
+      </div>
+      <div *ngIf="visible">
+        <ion-card *ngFor="let songs of listSongs">
+          <img src={{songs.caratula}} class="album">
+          <p class="titulo" style="font-weight: bold; font-size: medium; margin-bottom: 0;">{{songs.titulo}}</p>
+          <p class="titulo" style="font-size: smaller; margin-top: 0;"><li>{{songs.album}}, {{songs.autor}}</li></p>
+        </ion-card>
+      </div>
+      <p *ngIf="!visible" style="margin-left: 10px;">Sin resultados ...</p>
+    </ion-col>
+  </ion-row>
 </ion-content>
