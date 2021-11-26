@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../services/shared.service';
 import { albums } from '../services/albums';
+import { AlbumService } from '../services/album.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -9,10 +11,11 @@ import { albums } from '../services/albums';
 })
 export class Tab1Page {
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private album: AlbumService, private router: Router) {}
 
   listAlbums:any=[];
   listRecoms:any=[];
+  try:number = 1;
 
   refreshAlbums(){
     this.service.getAlbums()
@@ -36,6 +39,11 @@ export class Tab1Page {
         this.listRecoms.push(x as albums)
       });
     });
+  }
+
+  open(item){
+    this.album.sendInfo.emit({data:item});
+    this.router.navigateByUrl('/album');
   }
 
   ngOnInit(){

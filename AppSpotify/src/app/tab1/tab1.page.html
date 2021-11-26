@@ -2,7 +2,7 @@
   <h3>Álbums</h3>
   <ion-row >
     <ion-col size="6" *ngFor="let albums of listAlbums">
-      <ion-card>
+      <ion-card (click)="open(albums)">
         <img src={{albums.caratula}} class="album">
         <p class="titulo">{{albums.titulo}}</p>
       </ion-card>
@@ -13,7 +13,7 @@
     <ion-row>
       <ion-col size="12">
         <ion-segment scrollable="true">
-          <ion-segment-button *ngFor="let albums of listRecoms" value={{albums.titulo}}>
+          <ion-segment-button *ngFor="let albums of listRecoms" value={{albums.titulo}} (click)="open(albums)">
             <img src={{albums.caratula}} class="options">
             <p class="options">{{albums.titulo}}</p>
           </ion-segment-button>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SharedService } from '../services/shared.service';
 import { albums } from '../services/albums';
 import { songs } from '../services/songs';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-tab2',
@@ -10,7 +11,7 @@ import { songs } from '../services/songs';
 })
 export class Tab2Page {
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private album: AlbumService) {}
 
   listOptions: any=[];
   options: any=[];
@@ -32,6 +33,7 @@ export class Tab2Page {
       });
     });
   }
+
   refreshSongs(){
     this.service.getSongs()
     .snapshotChanges().subscribe(data => {

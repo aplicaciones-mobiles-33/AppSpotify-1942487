@@ -1,17 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-row>
+    <ion-col size=".5"></ion-col>
+    <ion-col size="11">
+      <h3>Biblioteca</h3><ion-item class="search" >
+        <ion-icon name="search"></ion-icon>
+        <ion-input placeholder="Álbums y artistas" [(ngModel)]="busqueda" (keyup.enter)="search()"></ion-input>
+      </ion-item>
+      <br>
+      <div>
+        <ion-card *ngFor="let options of listAlbums">
+          <img src={{options.caratula}} class="album">
+          <p class="titulo" style="font-weight: bold; font-size: large; margin-bottom: 0;">{{options.titulo}}</p>
+          <p class="titulo" style="font-size: smaller; margin-top: 0;">&nbsp;&nbsp;&nbsp;{{options.autor}}</p>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
